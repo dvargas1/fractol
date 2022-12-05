@@ -6,13 +6,15 @@
 #    By: dvargas <dvargas@student.42.rio>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/27 07:43:52 by dvargas           #+#    #+#              #
-#    Updated: 2022/11/28 07:26:40 by dvargas          ###   ########.fr        #
+#    Updated: 2022/12/05 07:28:45 by dvargas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 
-SRCS	=	main.c
+SRCS	=	main.c \
+			set.c \
+			render.c
 
 OBJS		= ${SRCS:%.c=%.o}
 NAME		= fractol
