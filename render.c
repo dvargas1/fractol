@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvargas <dvargas@student.42.rio>           +#+  +:+       +#+        */
+/*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:26:15 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/05 16:03:45 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/06 08:21:09 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,24 @@ int	create_trgb(int t, int r, int g, int b)
 	return (t << 24 | r << 16 | g << 8 | b);
 }
 
-void	ft_render(t_data *data, t_fractol *frac)
+
+double ft_magic(t_data *data, double pr, double pi)
+{
+	double ret;
+
+	ret = 0;
+	if (ft_strcmp(data->fname,"mandelbrot") == 0)
+		ret = mandelbrotset(pr, pi);
+	else if(ft_strcmp(data->fname,"julia") == 0)
+		ret = juliaset(data, pr, pi);
+	else if (ft_strcmp(data->fname,"tricorn") == 0)
+		ret = tricornset(pr, pi);
+		
+	return(ret);
+}
+
+
+void	ft_render(t_data *data)
 {
 	int x;
 	int y = -1;
@@ -39,10 +56,9 @@ void	ft_render(t_data *data, t_fractol *frac)
 		x = -1;
 		while (++x < WINDOW_WIDTH)
 		{
-			pr = frac->minR + (double)x * (frac->maxR - frac->minR) / WINDOW_WIDTH;
-			pi = frac->maxI + (double)y * (frac->minI - frac->maxI) / WINDOW_HEIGHT;	
-			color = juliaset(pr, pi, -0.744, 0.148);
-			//color = mandelb(pr, pi);
+			pr = data->minR + (double)x * (data->maxR - data->minR) / WINDOW_WIDTH;
+			pi = data->maxI + (double)y * (data->minI - data->maxI) / WINDOW_HEIGHT;	
+			color = ft_magic(data, pr, pi);
 			if (color == MAX_ITERATION)
 				my_mlx_pixelput(data, x, y, create_trgb(0, 0, 0, 0));
 			else

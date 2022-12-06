@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dvargas <dvargas@student.42.rio>           +#+  +:+       +#+         #
+#    By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/27 07:43:52 by dvargas           #+#    #+#              #
-#    Updated: 2022/12/05 07:28:45 by dvargas          ###   ########.fr        #
+#    Updated: 2022/12/06 08:54:51 by dvargas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 
 SRCS	=	main.c \
 			set.c \
-			render.c
+			render.c \
+			utils.c
 
 OBJS		= ${SRCS:%.c=%.o}
 NAME		= fractol

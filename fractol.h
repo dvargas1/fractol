@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvargas <dvargas@student.42.rio>           +#+  +:+       +#+        */
+/*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 07:28:19 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/05 07:37:18 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/06 08:54:44 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 //Includes
 # include <stdlib.h>
 # include "mlx_linux/mlx.h"
+# include "libft/libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <math.h>
@@ -47,6 +48,7 @@ typedef struct s_rect
 
 typedef struct s_data
 {
+	char *fname;
 	void *mlx_ptr;
 	void *win_ptr;
 	void *img;
@@ -55,31 +57,27 @@ typedef struct s_data
 	int line_len;
 	int endian;
 	unsigned int data;
-}				t_data;
-
-typedef struct s_valor
-{
-	double x;
-	double y;
-}	t_valor;
-
-typedef struct s_fractol
-{
 	double minR;
 	double minI;
 	double maxR;
 	double maxI;
-}	t_fractol;
-
-
+	double jr;
+	double ji;
+}				t_data;
 
 //Colors and Render
-void ft_render(t_data *data, t_fractol *frac);
+void ft_render(t_data *data);
 
 //FractalSets
-double	juliaset(double zr, double zi, double kr, double ki);
-double	mandelb(double cr, double ci);
+double	juliaset(t_data *data, double zr, double zi);
+double	mandelbrotset(double cr, double ci);
+double	tricornset(double cr, double ci);
 
+//KeyHandlers
+int handle_keypress(int keysym, t_data *data);
+
+// Utils
+double	ft_atof(char *str);
 
 
 #endif

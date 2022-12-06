@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvargas <dvargas@student.42.rio>           +#+  +:+       +#+        */
+/*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 07:43:38 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/05 07:26:52 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/06 09:04:23 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,40 +23,53 @@ int handle_keypress(int keysym, t_data *data)
 	printf("Keypress: %d\n", keysym);
 	return 0;
 }
-/*
-int handle_keyrelease(int keysym, void *data)
-{
-	printf("Keyrelease: %d\n", keysym);
-	return 0;
-}
-*/
 
-void test_init(t_fractol *frac)
+void ft_init(t_data *data, char **argv)
 {
-	frac->minR = -2.5;
-	frac->maxR = 1.5;
-	frac->minI = -2.0;
-	frac->maxI = 2.0;
+	data->fname = argv[1];
+	data->mlx_ptr = NULL;
+	data->win_ptr = NULL;
+	data->img = NULL;
+	data->addr = NULL;
+	data->minR = -2.0;
+	data->maxR = 1.0;
+	data->minI = 2.0;
+	data->maxI = -1.5;
+	if(ft_strcmp(data->fname,"julia") == 0)
+	{
+		data->minR = -2.0;
+		data->maxR = 2.0;
+		data->minI = 2.0;
+		data->maxI = -2.0;
+		if(argc == 4)
+		data->jr = ft_atof(argv[2]);
+		data->ji = ft_atof(argv[3]);
+	}
 }
 
-int main(void)
+void create_img(t_data *data)
+{
+	if((data->mlx_ptr = mlx_init()) == NULL)
+		return;
+	//chamar funcao de erro
+	if((data->win_ptr = mlx_new_window(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Fractol")) == NULL)
+	{
+		free(data->win_ptr);
+		//chamar funcao de erro
+	}
+	data->img = mlx_new_image(data->mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data->addr = mlx_get_data_addr(data->img, &data->bpp, &data->line_len, &data->endian);
+}
+
+int main(int argc, char **argv)
 {
 	t_data data;
-	t_fractol frac;
 
-	test_init(&frac);
-
-	if((data.mlx_ptr = mlx_init()) == NULL)
+	if(argc < 2)
 		return 1;
-	if((data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "Fractol")) == NULL)
-	{
-		free(data.win_ptr);
-		return 1;
-	}
-	
-	data.img = mlx_new_image(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	data.addr = mlx_get_data_addr(data.img, &data.bpp, &data.line_len, &data.endian);
-	ft_render(&data, &frac);
+	ft_init(&data, argv);
+	create_img(&data);
+	ft_render(&data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress,&data);
 //	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &handle_keyrelease,&data);
 
@@ -66,3 +79,8 @@ int main(void)
 	mlx_destroy_display(data.mlx_ptr);
 	free(data.mlx_ptr);
 }
+
+//Ver questao da inicializacao.
+//construir as mensagens de ajuda e erro
+//lidar com os hooks pedidos no mandatorio
+//organizar melhor os codigos 
