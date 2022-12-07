@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 07:28:19 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/06 08:54:44 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/07 08:01:19 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 // Screen size and mx iterations
 # define WINDOW_WIDTH 900
 # define WINDOW_HEIGHT 900
-# define MAX_ITERATION 200
+# define MAX_ITERATION 100
 
 //Colors
 #define RED_PIXEL 0xFF0000
@@ -68,16 +68,25 @@ typedef struct s_data
 //Colors and Render
 void ft_render(t_data *data);
 
+//Initialization
+void create_img(t_data *data);
+void ft_preparejulia(t_data *data,int argc, char **argv);
+void ft_init(t_data *data,int argc, char **argv);
+void ft_checkname(t_data *data,char *name);
+
 //FractalSets
 double	juliaset(t_data *data, double zr, double zi);
 double	mandelbrotset(double cr, double ci);
 double	tricornset(double cr, double ci);
+void ft_preparejulia(t_data *data,int argc, char **argv);
 
 //KeyHandlers
 int handle_keypress(int keysym, t_data *data);
 
 // Utils
 double	ft_atof(char *str);
+void help();
+int	endgame(t_data *data);
 
 
 #endif
