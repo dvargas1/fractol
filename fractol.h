@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 07:28:19 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/08 08:05:32 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/08 16:55:49 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 
 //Includes
 # include <stdlib.h>
-# include "mlx_linux/mlx.h"
+# include "minilibx_opengl/mlx.h"
 # include "libft/libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <math.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
+//# include <X11/X.h>
+//# include <X11/keysym.h>
 
 //KeyDefines
 # define CLOSE_BTN 17
-# define ESC_KEY 65307
+# define ESC_KEY 53
+// for linux # define ESC_KEY 53
 # define KEY_UP 65362
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
@@ -75,7 +76,9 @@ typedef struct s_data
 	double maxI;
 	double juliar;
 	double juliai;
-	int color;
+	unsigned int colorR;
+	unsigned int colorB;
+	double colorG;
 }				t_data;
 
 //Colors and Render

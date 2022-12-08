@@ -49,7 +49,6 @@ void	ft_render(t_data *data)
 	int y = -1;
 	double pr;
 	double pi;
-	double color;
 
 	while (++y < WINDOW_HEIGHT)
 	{
@@ -58,13 +57,13 @@ void	ft_render(t_data *data)
 		{
 			pr = data->minR + (double)x * (data->maxR - data->minR) / WINDOW_WIDTH;
 			pi = data->maxI + (double)y * (data->minI - data->maxI) / WINDOW_HEIGHT;	
-			color = ft_magic(data, pr, pi);
-			if (color == MAX_ITERATION)
+			data->colorG = ft_magic(data, pr, pi);
+			if (data->colorG == MAX_ITERATION)
 				my_mlx_pixelput(data, x, y, create_trgb(0, 0, 0, 0));
 			else
 			{
-				color = (color * 255 / MAX_ITERATION) * 1 * 23;
-				my_mlx_pixelput(data, x, y, create_trgb(0, 25, color, 200));
+				data->colorG = (data->colorG * 255 / MAX_ITERATION) * 1 * 23;
+				my_mlx_pixelput(data, x, y, create_trgb(0, data->colorR, data->colorG, data->colorB));
 			}
 			
 		}

@@ -30,7 +30,10 @@ void ft_checkname(t_data *data,char *name)
 	else if(ft_strcmp(name, "tricorn") == 0)
 		data->fname = "tricorn";
 	else
+	{
+		help();
 		endgame(data);
+	}
 }
 
 void ft_init(t_data *data,int argc, char **argv)
@@ -44,6 +47,9 @@ void ft_init(t_data *data,int argc, char **argv)
 	data->maxR = 1.0;
 	data->minI = 2.0;
 	data->maxI = -1.5;
+	data->colorR = 80;
+	data->colorB = 100;
+	data->colorG = 0;
 	if(ft_strcmp(data->fname,"julia") == 0)
 		ft_preparejulia(data, argc, argv);
 }

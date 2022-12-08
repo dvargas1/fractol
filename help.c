@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 06:20:06 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/08 08:22:49 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/08 15:55:39 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	endgame(t_data *data)
     if(data->mlx_ptr && data->win_ptr)
     {
 	    mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-	    mlx_destroy_display(data->mlx_ptr);
         free(data->mlx_ptr);
     }
     ft_putstr_fd("Thats all folks\n",1);
