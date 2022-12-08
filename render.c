@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:26:15 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/06 08:21:09 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/08 08:38:34 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_render(t_data *data)
 			else
 			{
 				color = (color * 255 / MAX_ITERATION) * 1 * 23;
-				my_mlx_pixelput(data, x, y, create_trgb(0, 255, color, 100));
+				my_mlx_pixelput(data, x, y, create_trgb(0, 25, color, 200));
 			}
 			
 		}

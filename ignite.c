@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Ignite.c                                           :+:      :+:    :+:   */
+/*   ignite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 07:28:04 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/07 07:32:35 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/08 08:04:40 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void ft_checkname(t_data *data,char *name)
 
 	while(name[i])
 	{
-		name[i] = tolower(name[i]);
+		name[i] = ft_tolower(name[i]);
 		i++;
 	}
 	if(ft_strcmp(name, "mandelbrot") == 0)
@@ -54,16 +54,16 @@ void ft_preparejulia(t_data *data,int argc, char **argv)
 		data->maxR = 2.0;
 		data->minI = 2.0;
 		data->maxI = -2.0;
-		data->jr = -0.76532;
-		data->ji = 0.321453;
+		data->juliar = -0.76532;
+		data->juliai = 0.321453;
 		if(argc == 4)
 		{
-			data->jr = ft_atof(argv[2]);
-			data->ji = ft_atof(argv[3]);
-			if(data->jr > 2.0 || data->jr < -2.0)
-				return 1;
-			if(data->ji >= 2.0 || data->ji <= -2.0)
-				return 1;
+			data->juliar = ft_atof(argv[2]);
+			data->juliai = ft_atof(argv[3]);
+			if(data->juliar > 2.0 || data->juliar < -2.0)
+				helpjulia(data);
+			if(data->juliai >= 2.0 || data->juliai <= -2.0)
+				helpjulia(data);
 		}
 }
 

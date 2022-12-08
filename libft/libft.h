@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvargas <dvarags@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 16:02:11 by dvargas           #+#    #+#             */
-/*   Updated: 2022/11/06 15:55:38 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/08 08:05:18 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,5 @@ void		ft_lstclear(t_list **lst, void (*del)(void*));
 void		ft_lstiter(t_list *ls, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, int *(f)(void *), void (*del)(void *));
 int			ft_strcmp(char *s1, char *s2);
+int			ft_isspace(int c);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 07:28:19 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/07 08:01:19 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/08 08:05:32 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@
 # include <math.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
+
+//KeyDefines
+# define CLOSE_BTN 17
+# define ESC_KEY 65307
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+# define MOUSE_UP 4
+# define MOUSE_DOWN 5
+# define MOUSE_LEFT 1
+# define MOUSE_RIGHT 3
 
 // Screen size and mx iterations
 # define WINDOW_WIDTH 900
@@ -61,8 +73,9 @@ typedef struct s_data
 	double minI;
 	double maxR;
 	double maxI;
-	double jr;
-	double ji;
+	double juliar;
+	double juliai;
+	int color;
 }				t_data;
 
 //Colors and Render
@@ -86,6 +99,8 @@ int handle_keypress(int keysym, t_data *data);
 // Utils
 double	ft_atof(char *str);
 void help();
+void helpjulia(t_data *data);
+int delete_img(t_data *data);
 int	endgame(t_data *data);
 
 

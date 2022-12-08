@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:21:31 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/06 08:21:37 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/08 07:30:32 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ double	juliaset(t_data *data, double zr, double zi)
 	{
 		if ((zr * zr + zi * zi) > 4.0)
 			break ;
-		tmp = 2 * zr * zi + data->ji;
-		zr = zr * zr - zi * zi + data->jr;
+		tmp = 2 * zr * zi + data->juliai;
+		zr = zr * zr - zi * zi + data->juliar;
 		zi = tmp;
 		i++;
 	}
