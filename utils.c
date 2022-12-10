@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:44:51 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/08 08:16:20 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/08 22:31:12 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ double	ft_atof(char *str)
 	div = 0.1;
 	neg = 1;
 	while(str[i] == '+' || ft_isspace(str[i]) || str[i] == '-')
-    {
-        if (str[i] == '-')
-            neg = -1;
-        i++;
-    }
+	{
+		if (str[i] == '-')
+			neg = -1;
+		i++;
+	}
 	while (str[i] && ft_isdigit(str[i]) && str[i] != '.')
 	{
 		nb = (nb * 10.0) + (str[i] - '0');

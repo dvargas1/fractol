@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 07:28:04 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/08 08:04:40 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/09 21:27:36 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void ft_init(t_data *data,int argc, char **argv)
 	data->maxI = -1.5;
 	data->colorR = 80;
 	data->colorB = 100;
-	data->colorG = 0;
 	if(ft_strcmp(data->fname,"julia") == 0)
 		ft_preparejulia(data, argc, argv);
 }

@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 07:43:38 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/08 08:35:10 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/09 23:02:10 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,60 +14,98 @@
 
 void ft_colorchange(t_data *data, int i, int flag)
 {
-	if(flag == 1)
+	if (flag == 1)
 		data->colorR += i;
-	else if(flag == 2)
-		data->colorB +=i;
-	else if(flag == 3)
-		data->colorG +=i;
+	else if (flag == 2)
+		data->colorB += i;
 }
 
-int ft_zoom(int keysym, int x, int y, t_data *data)
+void zoom_in(t_data *data)
 {
-	x = 0;
-	y = 0;
+		data->minI /= 1.5;
+		data->maxI /= 1.5;
+		data->minR /= 1.5;
+		data->maxR /= 1.5;
+}
+
+void zoom_out(t_data *data)
+{
+		data->minI *= 1.1;
+		data->maxI *= 1.1;
+		data->minR *= 1.1;
+		data->maxR *= 1.1;
+}
+
+void arrows_handler(t_data *data,int flag);
+
+int mouse_handler(int keysym, int x, int y, t_data *data)
+{
 	if(keysym == 4)
 	{
-		data->minI /= 1;
-		data->maxI /= 1;
-		data->minR /= 1;
-		data->maxR /= 1;
+		zoom_in(data);
+		x -= WINDOW_WIDTH / 2;
+		y -= WINDOW_HEIGHT / 2;
+		if(x < 0)
+			arrows_handler(data, 3);
+		else if(x > 0)
+			arrows_handler(data, 4);
+		if(y<0)
+			arrows_handler(data, 1);
+		else if(y> 0)
+			arrows_handler(data, 2);
 	}
 	else if(keysym == 5)
-	{
-		data->minI *= 1;
-		data->maxI *= 1;
-		data->minR *= 1;
-		data->maxR *= 1;
-	}
+		zoom_out(data);
 	ft_render(data);
 	return 0;
 }
 
-/*
-void ft_zoom(t_data *data, int i)
+void arrows_handler(t_data *data,int flag)
 {
-	data->
+	double	center_r;
+	double	center_i;
+
+	center_r = data->maxR - data->minR;
+	center_i = data->maxI - data->minI;
+	if(flag == 1)
+	{
+		data->maxI += center_i * 0.1;
+		data->minI += center_i * 0.1;
+	}
+	else if(flag == 2)
+	{
+		data->maxI -= center_i * 0.1;
+		data->minI -= center_i * 0.1;
+	}
+	else if(flag == 3)
+	{
+		data->maxR -= center_r * 0.1;
+		data->minR -= center_r * 0.1;
+	}
+	else if(flag == 4)
+	{
+		data->maxR += center_r * 0.1;
+		data->minR += center_r * 0.1;
+	}
 }
-*/
 
 int handle_keypress(int keysym, t_data *data)
 {
-	if(keysym == ESC_KEY)
+	if(keysym == XK_Escape)
 		endgame(data);
-	if(keysym == MOUSE_DOWN)
-		printf("RODINHA PRA BAIXO");
-	if(keysym == KEY_UP)
-		printf("UP");
-	if(keysym == KEY_DOWN)
-		printf("DOWN");
-	if(keysym == KEY_LEFT)
-		printf("LEFT");
-	if(keysym == KEY_RIGHT)
-		printf("RIGHT");
-	if(keysym == 15) // R
+//	if(keysym == XK_u)
+//		ft_zoom(data, 5);
+	if(keysym == XK_Up)
+		arrows_handler(data, 1);
+	if(keysym == XK_Down)
+		arrows_handler(data, 2);
+	if(keysym == XK_Left)
+		arrows_handler(data, 3);
+	if(keysym == XK_Right)
+		arrows_handler(data, 4);
+	if(keysym == XK_r) // R
 		ft_colorchange(data, 20, 1);
-	if(keysym == 11) // B
+	if(keysym == XK_b) // B
 		ft_colorchange(data, 20, 2);
 	ft_render(data);
 	return 0;
@@ -83,13 +121,11 @@ int main(int argc, char **argv)
 	create_img(&data);
 	ft_render(&data);
 	mlx_hook(data.win_ptr, CLOSE_BTN, 0, &endgame, &data);
-	mlx_mouse_hook (data.win_ptr, ft_zoom, &data);
 	mlx_key_hook(data.win_ptr, handle_keypress, &data);
+	mlx_mouse_hook (data.win_ptr, mouse_handler, &data);
 	mlx_loop(data.mlx_ptr);
 }
 
-//criar os movimentos de zoom mandatorios
-//lidar com os hooks pedidos no mandatorio
 //organizar melhor os codigos 
 
 //BONUS

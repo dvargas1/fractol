@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 07:28:19 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/08 16:55:49 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/09 08:20:20 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 
 //Includes
 # include <stdlib.h>
-# include "minilibx_opengl/mlx.h"
+//# include "minilibx_opengl/mlx.h"
+#include "mlx_linux/mlx.h"
 # include "libft/libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <math.h>
-//# include <X11/X.h>
-//# include <X11/keysym.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 
 //KeyDefines
 # define CLOSE_BTN 17
-# define ESC_KEY 53
-// for linux # define ESC_KEY 53
+// # define ESC_KEY 53
+ # define ESC_KEY 53
 # define KEY_UP 65362
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
@@ -41,23 +42,7 @@
 # define WINDOW_HEIGHT 900
 # define MAX_ITERATION 100
 
-//Colors
-#define RED_PIXEL 0xFF0000
-#define GREEN_PIXEL 0xFF00
-#define WHITE_PIXEL 0xFFFFFF
-#define GOLD_PIXEL 0xFFD700
-
-
 //Structs
-
-typedef struct s_rect
-{
-	int	x;
-	int	y;
-	int width;
-	int height;
-	int color;
-}	t_rect;
 
 typedef struct s_data
 {
@@ -78,7 +63,6 @@ typedef struct s_data
 	double juliai;
 	unsigned int colorR;
 	unsigned int colorB;
-	double colorG;
 }				t_data;
 
 //Colors and Render
