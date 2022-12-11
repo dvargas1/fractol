@@ -6,7 +6,7 @@
 #    By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/27 07:43:52 by dvargas           #+#    #+#              #
-#    Updated: 2022/12/09 07:59:40 by dvargas          ###   ########.fr        #
+#    Updated: 2022/12/10 21:42:26 by dvargas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@
 SRCS	=	main.c \
 			set.c \
 			render.c \
-			utils.c \
 			ignite.c \
-			help.c
+			help.c \
+			event.c
 
 OBJS		= ${SRCS:%.c=%.o}
 NAME		= fractol

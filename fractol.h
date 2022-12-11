@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 07:28:19 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/09 08:20:20 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/11 09:13:14 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@
 # define MOUSE_RIGHT 3
 
 // Screen size and mx iterations
-# define WINDOW_WIDTH 900
-# define WINDOW_HEIGHT 900
-# define MAX_ITERATION 100
+# define WIDTH 900
+# define HEIGHT 900
+# define MAX_ITERATION 200
 
 //Structs
 
@@ -61,6 +61,8 @@ typedef struct s_data
 	double maxI;
 	double juliar;
 	double juliai;
+	double datacr;
+	double dataci;
 	unsigned int colorR;
 	unsigned int colorB;
 }				t_data;
@@ -75,20 +77,27 @@ void ft_init(t_data *data,int argc, char **argv);
 void ft_checkname(t_data *data,char *name);
 
 //FractalSets
-double	juliaset(t_data *data, double zr, double zi);
-double	mandelbrotset(double cr, double ci);
-double	tricornset(double cr, double ci);
+double	juliaset(t_data *data);
+double	mandelbrotset(t_data *data);
+double	tricornset(t_data *data);
 void ft_preparejulia(t_data *data,int argc, char **argv);
 
 //KeyHandlers
 int handle_keypress(int keysym, t_data *data);
 
 // Utils
-double	ft_atof(char *str);
+double	ft_atof(char *str, double nb, int neg, double div);
 void help();
 void helpjulia(t_data *data);
 int delete_img(t_data *data);
 int	endgame(t_data *data);
+
+
+//Event Handlers
+double	ft_translate(double start, double end, double trans);
+void ft_colorchange(t_data *data, int i, int flag);
+int mouse_handler(int keysym, int x, int y, t_data *data);
+int handler_keypress(int keysym, t_data *data);
 
 
 #endif
