@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 06:20:06 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/11 08:05:36 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/11 18:14:48 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,31 @@
 
 void	help(t_data *data)
 {
+	ft_putstr_fd("\e[1;37m=========================================\e[0m\n", 1);
 	ft_putstr_fd("Welcome to the incredible world of fractals !\n", 1);
 	ft_putstr_fd("Today we have 3 types of fractals to show you\n", 1);
-	ft_putstr_fd("The incredible MANDELBROT !\n", 1);
-	ft_putstr_fd("The astonish TRICORN !\n", 1);
-	ft_putstr_fd("The unbelivable JULIA !\n", 1);
+	ft_putstr_fd("     \e[41mThe incredible MANDELBROT !\e[0m\n", 1);
+	ft_putstr_fd("     \e[44mThe astonish TRICORN !\e[0m\n", 1);
+	ft_putstr_fd("     \e[42mThe unbelivable JULIA !\e[0m\n", 1);
 	ft_putstr_fd("Just type the fractal name and enjoy the show !\n", 1);
-	ft_putstr_fd("You can create yout own JULIA by pressing Z and X also \
-					you can press A to reset fractal\n", 1);
+	ft_putstr_fd("	./fractal Mandelbrot \n\n", 1);
+	ft_putstr_fd("\e[1;37m============== Instructions =============\e[0m\n", 1);
+	ft_putstr_fd("Arrow Keys - move fractal around\n", 1);
+	ft_putstr_fd("R and B - change Red and Blue color range \n", 1);
+	ft_putstr_fd("Z and X - change Julia set values while running \n", 1);
+	ft_putstr_fd("Esc - Leave the program IN A CLEAN WAY !!\n\n", 1);
+	ft_putstr_fd("\e[1;37m=============== Julia set ===============\e[0m\n", 1);
+	ft_putstr_fd("You can choose Julia constants in parameters \n", 1);
+	ft_putstr_fd("/fractol Julia 0.1 -0.1 - Any value between -2.0 ~ 2.0\n", 1);
+	ft_putstr_fd("Use Z and X to change Julia set values while running \n", 1);
+	ft_putstr_fd("A - Reset Julia fractal to values 0.0 ~ 0.0 \n", 1);
+	ft_putstr_fd("\e[1;37m=========================================\e[0m\n", 1);
 	endgame(data);
 }
 
 void	helpjulia(t_data *data)
 {
-	ft_putstr_fd("Sorry we need a value between 2.0 ~ -2.0 to run Julia\n", 1);
+	ft_putstr_fd("We need a value between 2.0 ~ -2.0 to run Julia\n", 1);
 	endgame(data);
 }
 
