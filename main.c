@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 07:43:38 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/11 08:15:43 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/11 09:23:57 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(int argc, char **argv)
 	ft_render(&data);
 	mlx_hook(data.win_ptr, CLOSE_BTN, 0, &endgame, &data);
 	mlx_key_hook(data.win_ptr, handler_keypress, &data);
-	mlx_mouse_hook (data.win_ptr, mouse_handler, &data);
+	mlx_mouse_hook (data.win_ptr, handler_mouse, &data);
 	mlx_loop(data.mlx_ptr);
 }

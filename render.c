@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:26:15 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/11 09:13:30 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/11 09:32:24 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ double	ft_magic(t_data *data)
 
 void	atributeconstant(t_data *data, int x, int y)
 {
-	data->datacr = data->minR + (double)x * (data->maxR - data->minR) / WIDTH;
-	data->dataci = data->maxI + (double)y * (data->minI - data->maxI) / HEIGHT;
+	data->datacr = data->minr + (double)x * (data->maxr - data->minr) / WIDTH;
+	data->dataci = data->maxi + (double)y * (data->mini - data->maxi) / HEIGHT;
 }
 
 void	ft_render(t_data *data)
@@ -65,7 +65,7 @@ void	ft_render(t_data *data)
 			{
 				color = (color * 255 / MAX_ITERATION) * 12;
 				my_mlx_pixelput(data, x, y, \
-							create_trgb(0, data->colorR, color, data->colorB));
+						create_trgb(0, data->colorred, color, data->colorblue));
 			}
 		}
 	}

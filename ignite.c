@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 07:28:04 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/11 08:53:05 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/11 09:37:08 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,34 +30,17 @@ void	ft_checkname(t_data *data, char *name)
 		data->fname = "tricorn";
 	else
 	{
-		help();
+		help(data);
 		endgame(data);
 	}
 }
 
-void	ft_init(t_data *data, int argc, char **argv)
-{
-	ft_checkname(data, argv[1]);
-	data->mlx_ptr = NULL;
-	data->win_ptr = NULL;
-	data->img = NULL;
-	data->addr = NULL;
-	data->minR = -2.0;
-	data->maxR = 1.0;
-	data->minI = 2.0;
-	data->maxI = -1.5;
-	data->colorR = 80;
-	data->colorB = 100;
-	if (ft_strcmp(data->fname, "julia") == 0)
-		ft_preparejulia(data, argc, argv);
-}
-
 void	ft_preparejulia(t_data *data, int argc, char **argv)
 {
-	data->minR = -2.0;
-	data->maxR = 2.0;
-	data->minI = 2.0;
-	data->maxI = -2.0;
+	data->minr = -2.0;
+	data->maxr = 2.0;
+	data->mini = 2.0;
+	data->maxi = -2.0;
 	data->juliar = 0;
 	data->juliai = 0;
 	if (argc == 4)
@@ -69,6 +52,23 @@ void	ft_preparejulia(t_data *data, int argc, char **argv)
 		if (data->juliai >= 2.0 || data->juliai <= -2.0)
 			helpjulia(data);
 	}
+}
+
+void	ft_init(t_data *data, int argc, char **argv)
+{
+	ft_checkname(data, argv[1]);
+	data->mlx_ptr = NULL;
+	data->win_ptr = NULL;
+	data->img = NULL;
+	data->addr = NULL;
+	data->minr = -2.0;
+	data->maxr = 1.0;
+	data->mini = 2.0;
+	data->maxi = -1.5;
+	data->colorred = 80;
+	data->colorblue = 100;
+	if (ft_strcmp(data->fname, "julia") == 0)
+		ft_preparejulia(data, argc, argv);
 }
 
 void	create_img(t_data *data)

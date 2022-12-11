@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 07:33:51 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/11 09:16:29 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/11 09:31:28 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ double	ft_translate(double start, double end, double trans)
 	return (start + ((end - start) * trans));
 }
 
-int	mouse_handler(int keysym, int x, int y, t_data *data)
+int	handler_mouse(int keysym, int x, int y, t_data *data)
 {
 	double	r;
 	double	i;
@@ -26,46 +26,46 @@ int	mouse_handler(int keysym, int x, int y, t_data *data)
 	zoom = 0;
 	if (keysym == 1 || keysym == 2 || keysym == 3)
 		return (0);
-	r = (double)x / (WIDTH / (data->maxR - data->minR)) + data->minR;
-	i = (double)y / (HEIGHT / (data->maxI - data->minI)) * -1 + data->maxI;
+	r = (double)x / (WIDTH / (data->maxr - data->minr)) + data->minr;
+	i = (double)y / (HEIGHT / (data->maxi - data->mini)) * -1 + data->maxi;
 	if (keysym == 4)
 		zoom = 0.90;
 	else if (keysym == 5)
 		zoom = 1.10;
-	data->maxI = ft_translate(i, data->maxI, (1.0 * zoom));
-	data->maxR = ft_translate(r, data->maxR, (1.0 * zoom));
-	data->minI = ft_translate(i, data->minI, (1.0 * zoom));
-	data->minR = ft_translate(r, data->minR, (1.0 * zoom));
+	data->maxi = ft_translate(i, data->maxi, (1.0 * zoom));
+	data->maxr = ft_translate(r, data->maxr, (1.0 * zoom));
+	data->mini = ft_translate(i, data->mini, (1.0 * zoom));
+	data->minr = ft_translate(r, data->minr, (1.0 * zoom));
 	ft_render(data);
 	return (0);
 }
 
 void	handler_arrows(t_data *data, char name)
 {
-	double	center_r;
-	double	center_i;
+	double	centerr;
+	double	centeri;
 
-	center_r = data->maxR - data->minR;
-	center_i = data->maxI - data->minI;
+	centerr = data->maxr - data->minr;
+	centeri = data->maxi - data->mini;
 	if (name == 'D')
 	{
-		data->maxI -= center_i * 0.15;
-		data->minI -= center_i * 0.15;
+		data->maxi -= centeri * 0.15;
+		data->mini -= centeri * 0.15;
 	}
 	if (name == 'U')
 	{
-		data->maxI += center_i * 0.15;
-		data->minI += center_i * 0.15;
+		data->maxi += centeri * 0.15;
+		data->mini += centeri * 0.15;
 	}
 	if (name == 'R')
 	{
-		data->maxR += center_r * 0.15;
-		data->minR += center_r * 0.15;
+		data->maxr += centerr * 0.15;
+		data->minr += centerr * 0.15;
 	}
 	if (name == 'L')
 	{
-		data->maxR -= center_r * 0.15;
-		data->minR -= center_r * 0.15;
+		data->maxr -= centerr * 0.15;
+		data->minr -= centerr * 0.15;
 	}
 }
 
@@ -81,9 +81,9 @@ void	ft_transform(t_data *data, int flag)
 		data->juliar = 0.0;
 	}
 	if (flag == 4)
-		data->colorR += 20;
+		data->colorred += 20;
 	if (flag == 5)
-		data->colorB += 20;
+		data->colorblue += 20;
 }
 
 int	handler_keypress(int keysym, t_data *data)
