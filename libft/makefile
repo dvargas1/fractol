@@ -6,7 +6,7 @@
 #    By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/25 13:30:55 by dvargas           #+#    #+#              #
-#    Updated: 2022/12/06 08:56:23 by dvargas          ###   ########.fr        #
+#    Updated: 2022/12/13 17:30:22 by dvargas          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,17 +64,17 @@ RM = rm -f
 LIBC = ar -rcs
 
 ${NAME}:
-	$(CC) $(CFLAGS) -I. $(SRCS)
-	$(LIBC) $(NAME) $(OBJS)
+	@$(CC) $(CFLAGS) -I. $(SRCS)
+	@$(LIBC) $(NAME) $(OBJS)
 
 all:		$(NAME)
 
 clean:
-	$(RM) $(OBJS)
-	$(RM) $(BONUS_O)
+	@$(RM) $(OBJS)
+	@$(RM) $(BONUS_O)
 
 fclean:		clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re:			fclean all
 

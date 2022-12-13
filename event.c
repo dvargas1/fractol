@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 07:33:51 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/11 09:31:28 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/13 17:44:08 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,10 @@ void	ft_transform(t_data *data, int flag)
 		data->juliar += -0.1;
 	if (flag == 3)
 	{
+		data->minr = -2.0;
+		data->maxr = 2.0;
+		data->mini = 2.0;
+		data->maxi = -2.0;
 		data->juliai = 0.0;
 		data->juliar = 0.0;
 	}
@@ -88,25 +92,25 @@ void	ft_transform(t_data *data, int flag)
 
 int	handler_keypress(int keysym, t_data *data)
 {
-	if (keysym == XK_Escape)
+	if (keysym == ESC_KEY)
 		endgame(data);
-	if (keysym == XK_Up)
+	if (keysym == KEY_UP)
 		handler_arrows(data, 'U');
-	if (keysym == XK_Down)
+	if (keysym == KEY_DOWN)
 		handler_arrows(data, 'D');
-	if (keysym == XK_Left)
+	if (keysym == KEY_LEFT)
 		handler_arrows(data, 'L');
-	if (keysym == XK_Right)
+	if (keysym == KEY_RIGHT)
 		handler_arrows(data, 'R');
-	if (keysym == XK_r)
+	if (keysym == KEY_R)
 		ft_transform(data, 4);
-	if (keysym == XK_b)
+	if (keysym == KEY_B)
 		ft_transform(data, 5);
-	if (keysym == XK_z)
+	if (keysym == KEY_Z)
 		ft_transform(data, 1);
-	if (keysym == XK_x)
+	if (keysym == KEY_X)
 		ft_transform(data, 2);
-	if (keysym == XK_a)
+	if (keysym == KEY_A)
 		ft_transform(data, 3);
 	ft_render(data);
 	return (0);

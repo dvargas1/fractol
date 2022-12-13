@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc < 2)
-		help(&data);
+		help();
 	ft_init(&data, argc, argv);
 	create_img(&data);
 	ft_render(&data);

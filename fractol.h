@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 07:28:19 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/11 09:36:33 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/13 17:31:59 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,28 @@
 
 //Includes
 # include <stdlib.h>
-//# include "minilibx_opengl/mlx.h"
-# include "mlx_linux/mlx.h"
+# include "mlx/mlx.h"
+//# include "mlx_linux/mlx.h"
 # include "libft/libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <math.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
+//# include <X11/X.h>
+//# include <X11/keysym.h>
 
 //KeyDefines
 # define CLOSE_BTN 17
 # define ESC_KEY 53
-# define KEY_UP 65362
-# define KEY_DOWN 65364
-# define KEY_LEFT 65361
-# define KEY_RIGHT 65363
+# define KEY_UP 126
+# define KEY_DOWN 125
+# define KEY_LEFT 123
+# define KEY_RIGHT 124
+# define KEY_R 15
+# define KEY_B 11
+# define KEY_Z 6
+# define KEY_X 7
+# define KEY_A 0
+
 # define MOUSE_UP 4
 # define MOUSE_DOWN 5
 # define MOUSE_LEFT 1
@@ -80,8 +86,8 @@ double	tricornset(t_data *data);
 
 // Utils
 double	ft_atof(char *str, double nb, int neg, double div);
-void	help(t_data *data);
-void	helpjulia(t_data *data);
+void	help(void);
+void	helpjulia(void);
 int		endgame(t_data *data);
 
 //Event Handlers

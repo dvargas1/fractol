@@ -6,7 +6,7 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 07:28:04 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/11 09:37:08 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/13 17:42:17 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ void	ft_checkname(t_data *data, char *name)
 	else if (ft_strcmp(name, "tricorn") == 0)
 		data->fname = "tricorn";
 	else
-	{
-		help(data);
-		endgame(data);
-	}
+		help();
 }
 
 void	ft_preparejulia(t_data *data, int argc, char **argv)
@@ -43,14 +40,16 @@ void	ft_preparejulia(t_data *data, int argc, char **argv)
 	data->maxi = -2.0;
 	data->juliar = 0;
 	data->juliai = 0;
+	if (argc == 3)
+		helpjulia();
 	if (argc == 4)
 	{
 		data->juliar = ft_atof(argv[2], 0, 1, 0.1);
 		data->juliai = ft_atof(argv[3], 0, 1, 0.1);
 		if (data->juliar > 2.0 || data->juliar < -2.0)
-			helpjulia(data);
+			helpjulia();
 		if (data->juliai >= 2.0 || data->juliai <= -2.0)
-			helpjulia(data);
+			helpjulia();
 	}
 }
 
@@ -62,9 +61,9 @@ void	ft_init(t_data *data, int argc, char **argv)
 	data->img = NULL;
 	data->addr = NULL;
 	data->minr = -2.0;
-	data->maxr = 1.0;
+	data->maxr = 2.0;
 	data->mini = 2.0;
-	data->maxi = -1.5;
+	data->maxi = -2.0;
 	data->colorred = 80;
 	data->colorblue = 100;
 	if (ft_strcmp(data->fname, "julia") == 0)

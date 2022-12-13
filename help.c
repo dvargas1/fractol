@@ -6,13 +6,13 @@
 /*   By: dvargas <dvargas@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 06:20:06 by dvargas           #+#    #+#             */
-/*   Updated: 2022/12/11 18:14:48 by dvargas          ###   ########.fr       */
+/*   Updated: 2022/12/13 17:28:13 by dvargas          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	help(t_data *data)
+void	help(void)
 {
 	ft_putstr_fd("\e[1;37m=========================================\e[0m\n", 1);
 	ft_putstr_fd("Welcome to the incredible world of fractals !\n", 1);
@@ -33,13 +33,15 @@ void	help(t_data *data)
 	ft_putstr_fd("Use Z and X to change Julia set values while running \n", 1);
 	ft_putstr_fd("A - Reset Julia fractal to values 0.0 ~ 0.0 \n", 1);
 	ft_putstr_fd("\e[1;37m=========================================\e[0m\n", 1);
-	endgame(data);
+	exit(200);
 }
 
-void	helpjulia(t_data *data)
+void	helpjulia(void)
 {
 	ft_putstr_fd("We need a value between 2.0 ~ -2.0 to run Julia\n", 1);
-	endgame(data);
+	ft_putstr_fd("Julia call example:", 1);
+	ft_putstr_fd("\e[42m./fractol julia (number1) (number2)\e[0m\n", 1);
+	exit(-1);
 }
 
 int	endgame(t_data *data)
@@ -80,6 +82,6 @@ double	ft_atof(char *str, double nb, int neg, double div)
 		i++;
 	}
 	if (str[i] && !ft_isdigit(str[i]))
-		return (-1);
+		return (-42);
 	return (nb * neg);
 }
